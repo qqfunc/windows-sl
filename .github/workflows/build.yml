@@ -22,10 +22,14 @@ jobs:
       run: |
         gh release -R mtoyoda/sl download -A tar.gz -O sl.tar.gz
         tar -xzf sl.tar.gz -C sl --strip-components 1
+      env:
+        GH_TOKEN: ${{ github.token }}
     - name: Download PDCurses source
       run: |
         gh release -R wmcbrine/PDCurses download -A tar.gz -O PDCurses.tar.gz
         tar -xzf PDCurses.tar.gz -C PDCurses --strip-components 1
+      env:
+        GH_TOKEN: ${{ github.token }}
     - name: Build PDCurses
       working-directory: PDCurses/wincon
       run: make
