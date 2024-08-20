@@ -33,19 +33,15 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
     - name: Build PDCurses
-      working-directory: PDCurses/wincon
+      working-directory: PDCurses\\wincon
       run: make
       env:
-        PDCURSES_SRCDIR: ${{ github.workspace }}/sl/PDCurses
+        PDCURSES_SRCDIR: ${{ github.workspace }}\\sl\\PDCurses
     - name: Rename library file
       working-directory: sl/PDCurses
       run: rename pdcurses.a libncurses.a
     - name: Apply a patch file to SL Makefile
-      run: patch -u sl/Makefile sl.patch
-    - name: Download SL source
-      run: |
-        gh release -R mtoyoda/sl download -A tar.gz -O sl.tar.gz
-        tar -xzf sl.tar.gz -C sl --strip-components 1
+      run: patch -u sl\\Makefile sl.patch
     - name: Build
       working-directory: sl
       run: make
@@ -53,6 +49,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: sl
-        path: ${{ github.workspace }}/sl/sl.exe
+        path: ${{ github.workspace }}\\sl\\sl.exe
         if-no-files-found: error
         retention-days: 1
