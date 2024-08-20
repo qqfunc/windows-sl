@@ -23,6 +23,7 @@ jobs:
         gh release -R mtoyoda/sl download -A tar.gz -O sl.tar.gz
         mkdir sl
         tar -xzf sl.tar.gz -C sl --strip-components 1
+        mkdir sl/PDCurses
       env:
         GH_TOKEN: ${{ github.token }}
     - name: Download PDCurses source
