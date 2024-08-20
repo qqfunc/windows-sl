@@ -35,6 +35,8 @@ jobs:
     - name: Build PDCurses
       working-directory: sl/PDCurses/wincon
       run: make
+      env:
+        PDCURSES_SRCDIR: '${{ github.workspace }}/sl/PDCurses'
     - name: Rename library file
       working-directory: sl/PDCurses
       run: move pdcurses.a libncurses.a
