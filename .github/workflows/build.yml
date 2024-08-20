@@ -37,7 +37,7 @@ jobs:
       run: make
     - name: Rename library file
       working-directory: sl/PDCurses
-      run: rename pdcurses.a libncurses.a
+      run: move pdcurses.a libncurses.a
     - name: Apply a patch file to SL Makefile
       run: patch -u sl/Makefile sl.patch
     - name: Build
