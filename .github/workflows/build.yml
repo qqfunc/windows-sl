@@ -23,21 +23,18 @@ jobs:
         gh release -R mtoyoda/sl download -A tar.gz -O sl.tar.gz
         mkdir sl
         tar -xzf sl.tar.gz -C sl --strip-components 1
-        mkdir sl/PDCurses
       env:
         GH_TOKEN: ${{ github.token }}
     - name: Download PDCurses source
       run: |
         gh release -R wmcbrine/PDCurses download -A tar.gz -O PDCurses.tar.gz
-        mkdir PDCurses
+        mkdir sl/PDCurses
         tar -xzf PDCurses.tar.gz -C PDCurses --strip-components 1
       env:
         GH_TOKEN: ${{ github.token }}
     - name: Build PDCurses
-      working-directory: PDCurses/wincon
+      working-directory: sl/PDCurses/wincon
       run: make
-      env:
-        PDCURSES_SRCDIR: '${{ github.workspace }}/sl/PDCurses'
     - name: Rename library file
       working-directory: sl/PDCurses
       run: rename pdcurses.a libncurses.a
