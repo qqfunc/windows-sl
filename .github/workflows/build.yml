@@ -27,7 +27,7 @@ jobs:
         GH_TOKEN: ${{ github.token }}
     - name: Download PDCurses source
       run: |
-        gh release -R wmcbrine/PDCurses download -A tar.gz -O PDCurses.tar.gz
+        gh release -R wmcbrine/PDCurses download -A tar.gz -O sl/PDCurses.tar.gz
         mkdir sl/PDCurses
         tar -xzf sl/PDCurses.tar.gz -C sl/PDCurses --strip-components 1
       env:
